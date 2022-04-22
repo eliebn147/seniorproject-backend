@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
+const cloudinary = require('cloudinary').v2;
+
 const ProductModel = require("../models/ProductModel.js");
 
 router.post(
-  "/create", // http://www.benjamin.com/products/
-  function (req, res) {
+  "/create", 
+    async function (req, res) {
     const document = {
       name: req.body.name.toLowerCase(),
       items: req.body.items,
@@ -13,13 +15,39 @@ router.post(
       type: req.body.type,
     };
 
-    ProductModel.findOne({ name: document.name }).then(function (dbDocument) {
+    ProductModel.findOne({ name: document.name }).then( async function (dbDocument) {
       if (dbDocument) {
         res.status(403).json({
           status: "not ok",
           message: "Product already exists",
         });
       } else {
+           /* UPLOAD FILE TO CLOUDINARY */
+                    // Check if file has been attached
+                    const files = Object.values(req.files);
+                    if(files.length > 0) {
+                        // Upload the file to Cloudinary
+                        await cloudinary.uploader.upload(
+                            files[0].path,
+                            function(cloudinaryErr, cloudinaryResult) {
+
+                                // If upload is succesful
+                                if(!cloudinaryErr) {
+                                    // Add image url to 'document'
+                                    document['url'] = cloudinaryResult.url;
+                                }
+                                // else
+                                else {
+                                    // Send client error
+                                    res.json(
+                                        {
+                                            message: "Avatar upload error in /user/register"
+                                        }
+                                    )
+                                }
+                            }
+                        )
+                    };
         ProductModel.create(document)
           .then(function (dbDocument) {
             res.json({

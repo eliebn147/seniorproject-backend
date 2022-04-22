@@ -30,6 +30,8 @@ cloudinary.config(
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user-routes.js');
 const productRoutes = require('./routes/product-routes.js');
+const orderRoutes = require('./routes/order-routes.js');
+const feedbackRoutes = require('./routes/feedback-routes.js');
 
 
 // --------- Start of PassportJS configuration ---------
@@ -136,6 +138,12 @@ server.use(
     '/product', productRoutes
 );
 
+server.use(
+    '/order', orderRoutes
+);
+server.use(
+    '/feedback', feedbackRoutes
+);
 server.listen(
     process.env.PORT,
     function() {

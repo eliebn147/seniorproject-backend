@@ -14,7 +14,7 @@ const ProductSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
-        category: {
+        type: {
             type: String,
             required: true
         },
@@ -22,6 +22,11 @@ const ProductSchema = new mongoose.Schema(
             type: Date,
             required: true,
             default: Date.now
+        },
+        image : {
+            type : String,
+            required: false,
+            default :"https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
         }
     }
 );

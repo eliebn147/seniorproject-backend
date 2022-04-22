@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        description: {
+        items: {
             type: String,
             required: true
         },
@@ -23,7 +23,7 @@ const ProductSchema = new mongoose.Schema(
             required: true,
             default: Date.now
         },
-        image : {
+        url : {
             type : String,
             required: false,
             default :"https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 

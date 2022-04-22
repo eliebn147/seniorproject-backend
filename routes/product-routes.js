@@ -8,7 +8,7 @@ router.post(
   function (req, res) {
     const document = {
       name: req.body.name.toLowerCase(),
-      description: req.body.description,
+      items: req.body.items,
       price: req.body.price,
       type: req.body.type,
     };

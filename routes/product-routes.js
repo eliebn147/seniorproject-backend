@@ -38,4 +38,27 @@ router.post(
   }
 );
 
+router.get('/all' , 
+  function(req , res) {
+      ProductModel
+      .find()
+      .then(
+          function(dbDocument){
+            res.json({
+                message : "All the products",
+                document : dbDocument
+            })
+          }
+      )
+      .catch(
+          function(error){
+              res.json({
+                  message : "Error in product/all",
+                  error : error
+              })
+          }
+      )
+  }
+)
+
 module.exports = router;

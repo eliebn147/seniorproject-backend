@@ -89,4 +89,36 @@ router.get('/all' ,
   }
 )
 
+router.post('/delete' , 
+function(req , res){
+    const document = {
+        "email" : req.body.email
+    }
+
+    ProductModel
+    .findOneAndDelete({email:document.email})
+    .then(
+        function(result){
+            res.json(
+                {
+                    document: result,
+                    message: "Product deleted"
+                }
+            );
+        }
+    )
+    .catch(
+        function(error){
+            console.log("Query error in /order/delete" + error);
+            res.json(
+              {
+                  document: result,
+                  message: "Error deleting the product"
+              }
+          );
+        }
+    )
+}
+)
+
 module.exports = router;

@@ -92,11 +92,11 @@ router.get('/all' ,
 router.post('/delete' , 
 function(req , res){
     const document = {
-        "email" : req.body.email
+        "name" : req.body.name
     }
 
     ProductModel
-    .findOneAndDelete({email:document.email})
+    .findOneAndDelete({name:document.name})
     .then(
         function(result){
             res.json(

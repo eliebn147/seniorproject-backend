@@ -121,4 +121,47 @@ function(req , res){
 }
 )
 
+router.post('/one' , 
+function(req , res){
+    const document = {
+        "name" : req.body.name
+    }
+
+    ProductModel
+    .findOne({name:document.name.toLowerCase()})
+    .then(
+
+      
+        function(result){
+          if(result !== null){
+            res.json(
+                {
+                    document: result,
+                    message: "Product found"
+                }
+            );
+        }
+        else{
+          res.json(
+            {
+                message: "Product is not found"
+            }
+        );
+        }
+}
+    )
+    .catch(
+        function(error){
+            console.log("Query error in /order/one" + error);
+            res.json(
+              {
+                  document: result,
+                  message: "Error finding the product"
+              }
+          );
+        }
+    )
+}
+)
+
 module.exports = router;

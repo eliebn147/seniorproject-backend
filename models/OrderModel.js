@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const OrderSchema = new mongoose.Schema(
     {
         email: {
@@ -12,22 +13,8 @@ const OrderSchema = new mongoose.Schema(
             required: true
         },
 
-        orderitems : [ 
-            {
-                productname : {
-                    type: String,
-                    required: true
-                },
-                productprice : {
-                    type : Number,
-                    required : true,
-                },
-                productqty : {
-                    type : Number,
-                    required : true,
-                }
-            }
-        ],
+        orderitems : [Object]
+        ,
       
         dateCreated: {
             type: Date,

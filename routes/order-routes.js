@@ -9,7 +9,7 @@ router.post('/create',
         const document = {
             "email": req.body.email,
             "totalprice": req.body.totalprice,
-            "orderitems" : req.body.orderitems
+            "orderitems" : JSON.parse(req.body.orderitems)
         };
 
         OrderModel
@@ -36,6 +36,30 @@ router.post('/create',
         );
     }
 );
+
+router.post('/all' , 
+  function(req , res) {
+      OrderModel
+      .find({ email: req.body.email })
+      .then(
+          function(dbDocument){
+            res.json({
+                message : "All the orders",
+                document : dbDocument,
+            })
+          }
+      )
+      
+      .catch(
+          function(error){
+              res.json({
+                  message : "Error in order/all",
+                  error : error
+              })
+          }
+      )
+  }
+)
 
 // example of deleting many
 

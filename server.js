@@ -32,6 +32,7 @@ const userRoutes = require('./routes/user-routes.js');
 const productRoutes = require('./routes/product-routes.js');
 const orderRoutes = require('./routes/order-routes.js');
 const feedbackRoutes = require('./routes/feedback-routes.js');
+const dollarRoutes = require('./routes/dollar-routes.js');
 
 
 // --------- Start of PassportJS configuration ---------
@@ -143,6 +144,9 @@ server.use(
 );
 server.use(
     '/feedback', feedbackRoutes
+);
+server.use(
+    '/dollar', dollarRoutes
 );
 server.listen(
     process.env.PORT,

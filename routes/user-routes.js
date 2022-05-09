@@ -21,7 +21,8 @@ router.post('/register',               // http://localhost:3001/user/
             "email": req.body.email,
             "password": req.body.password,
             "phone": req.body.phone,
-            "address":req.body.address
+            "address":req.body.address,
+            "adminstatus" : req.body.adminstatus
         }
 
         // Start of BcryptJS
@@ -186,6 +187,7 @@ router.post('/login',
                                                         lastName: dbDocument.lastName,
                                                         phone:dbDocument.phone,
                                                         address:dbDocument.address,
+                                                        adminstatus : dbDocument.adminstatus,
                                                         jsonwebtoken: jsonwebtoken
                                                     }
                                                 }

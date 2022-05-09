@@ -27,6 +27,11 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        adminstatus: {
+            type: String,
+            default: 'isUser',
+            required: false,
+        },
         avatar: {
             type: String,
             required: false,

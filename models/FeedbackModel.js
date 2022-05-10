@@ -11,6 +11,7 @@ const FeedbackSchema = new mongoose.Schema(
             required: true,
         },
         avatar : {
+            type: String,
             required : false,
         },
         dateCreated: {

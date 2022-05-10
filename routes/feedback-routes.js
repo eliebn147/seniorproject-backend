@@ -25,7 +25,7 @@ router.post("/create", function (req, res) {
     });
 });
 
-router.get("all", function (req, res) {
+router.get("/all", function (req, res) {
   FeedbackModel
   .find()
   .then(function (dbDocument) {

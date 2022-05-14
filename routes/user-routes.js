@@ -301,5 +301,37 @@ router.put('/update',
     }
 );
 
+router.post('/delete' , 
+function(req , res){
+    const document = {
+        "email" : req.body.email
+    }
+
+    UserModel
+    .findOneAndDelete({email:document.email})
+    .then(
+        function(result){
+            res.json(
+                {
+                    document: result,
+                    message: "User deleted"
+                }
+            );
+        }
+    )
+    .catch(
+        function(error){
+            console.log("Query error in /user/delete" + error);
+            res.json(
+              {
+                  document: result,
+                  message: "Error deleting the user"
+              }
+          );
+        }
+    )
+}
+)
+
 
 module.exports = router;

@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
         },
         adminstatus: {
             type: String,
-            default: 'isUser',
+            default: 'normaluser',
             required: false,
         },
         avatar: {

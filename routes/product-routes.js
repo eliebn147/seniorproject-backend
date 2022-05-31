@@ -164,4 +164,42 @@ function(req , res){
 }
 )
 
+router.put('/update',
+    function(req, res) {
+
+        // The search criteria
+        const search = {name: req.body.name}
+
+        // The replacement of the document
+        const updatedDocument = {
+            
+            // lastName: req.body.lastName,
+            // email: req.body.email,
+            // password: req.body.password,
+            // phone: req.body.phone
+        }
+
+        // This will tell MongoDB to show the updated document
+        const options = {new: true}
+
+        ProductModel
+        .findOneAndUpdate(
+            search,
+            {$inc : {'count' : req.body.count}},
+            options
+        )
+        .then(
+            function(updatedDocument) {
+                
+                res.send(updatedDocument);
+            }
+        )
+        .catch(
+            function(error) {
+                console.log('Error /user/update', error);
+            }
+        )
+    }
+);
+
 module.exports = router;

@@ -273,10 +273,10 @@ router.put('/update',
         // The replacement of the document
         const updatedDocument = {
             firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password,
-            phone: req.body.phone
+            // lastName: req.body.lastName,
+            // email: req.body.email,
+            // password: req.body.password,
+            // phone: req.body.phone
         }
 
         // This will tell MongoDB to show the updated document
